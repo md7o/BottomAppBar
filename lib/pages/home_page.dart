@@ -1,42 +1,42 @@
-import 'package:appbar_project/models/bottom.dart';
+import 'package:appbar_project/models/List.dart';
 import 'package:flutter/material.dart';
 
-class page_design extends StatelessWidget {
-  const page_design({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<PopularsCar> popular = [
-      const PopularsCar(
+    final List<cities> EuropeCities = [
+      const cities(
         title: 'London',
         backgroundImg:
             "https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTYyNDg1MjE3MTI1Mjc5Mzk4/topic-london-gettyimages-760251843-promo.jpg",
         selling: '1.1M 👤',
       ),
-      const PopularsCar(
+      const cities(
         title: 'Paris',
         backgroundImg:
             "https://www.fodors.com/wp-content/uploads/2018/10/HERO_UltimateParis_Heroshutterstock_112137761.jpg",
         selling: '1M 👤',
       ),
-      const PopularsCar(
+      const cities(
         title: 'Roma',
         backgroundImg:
             "https://avinor.no/globalassets/_reiselyst/destinasjoner/roma/roma-ny.png?preset=1000",
         selling: '860K 👤',
       ),
-      const PopularsCar(
+      const cities(
         title: 'Istanbul',
         backgroundImg: "https://www.melares.com/uploads/150616275.jpg",
         selling: '860K 👤',
       ),
-      const PopularsCar(
+      const cities(
         title: 'Madrid',
         backgroundImg:
             "https://assets3.thrillist.com/v1/image/3128243/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70",
         selling: '860K 👤',
       ),
-      const PopularsCar(
+      const cities(
         title: 'Belgium',
         backgroundImg:
             "https://www.state.gov/wp-content/uploads/2018/11/Belgium-2109x1406.jpg",
@@ -73,14 +73,23 @@ class page_design extends StatelessWidget {
           const SizedBox(
             height: 60,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(
-              'Europe cities!',
-              style: TextStyle(
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Europe cities!',
+                  style: TextStyle(
+                      color: Colors.amber,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.sort_rounded,
                   color: Colors.amber,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
+                )
+              ],
             ),
           ),
           Expanded(
@@ -92,9 +101,9 @@ class page_design extends StatelessWidget {
                   mainAxisSpacing: 0,
                   crossAxisSpacing: 0,
                   crossAxisCount: 2,
-                  mainAxisExtent: 160,
+                  mainAxisExtent: 170,
                 ),
-                children: popular.map(
+                children: EuropeCities.map(
                   (po) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(

@@ -1,4 +1,7 @@
-import 'package:appbar_project/page_design.dart';
+import 'package:appbar_project/pages/favorite_page.dart';
+import 'package:appbar_project/pages/home_page.dart';
+import 'package:appbar_project/pages/setting_page.dart';
+import 'package:appbar_project/pages/tickets_page.dart';
 import 'package:flutter/material.dart';
 
 class BotoomAppBar1 extends StatefulWidget {
@@ -11,11 +14,21 @@ class BotoomAppBar1 extends StatefulWidget {
 class _BotoomAppBar1State extends State<BotoomAppBar1> {
   int currentIndex = 0;
 
+  final List<Widget> pages = [
+    const HomePage(),
+    const FavoritePage(),
+    const TicketsPage(),
+    const SettingPage(),
+    // const Setting(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const page_design(),
-      backgroundColor: const Color(0xFF1E2C47),
+      body: pages[currentIndex], //to show pages at click
+
+      backgroundColor: const Color(0xFF1E2C47), //bottom AppBar backgroundColor
+
       bottomNavigationBar: Theme(
         data: ThemeData(
           splashColor: Colors.transparent,
@@ -23,10 +36,7 @@ class _BotoomAppBar1State extends State<BotoomAppBar1> {
         ),
         child: Container(
           decoration: const BoxDecoration(
-            color: Color.fromARGB(0, 25, 40, 54),
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
-            ),
+            color: Color(0x00192836),
           ),
           child: BottomNavigationBar(
             iconSize: 30,

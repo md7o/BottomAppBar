@@ -1,9 +1,9 @@
-class PopularsCar {
+class cities {
   final String backgroundImg;
   final String title;
   final String selling;
 
-  const PopularsCar({
+  const cities({
     required this.backgroundImg,
     required this.title,
     required this.selling,
