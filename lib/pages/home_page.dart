@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
             height: 60,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
                                 colors: [
-                                  Colors.black.withOpacity(0.9),
+                                  Colors.black.withOpacity(0.7),
                                   Colors.transparent
                                 ],
                               ),

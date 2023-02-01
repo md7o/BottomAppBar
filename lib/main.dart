@@ -1,4 +1,4 @@
-import 'package:appbar_project/bottom_appbar1.dart';
+import 'package:appbar_project/bottom_appbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const BotoomAppBar1(),
+      home: const BotoomAppBar(),
     );
   }
 }

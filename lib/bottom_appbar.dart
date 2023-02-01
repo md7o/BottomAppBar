@@ -4,14 +4,14 @@ import 'package:appbar_project/pages/setting_page.dart';
 import 'package:appbar_project/pages/tickets_page.dart';
 import 'package:flutter/material.dart';
 
-class BotoomAppBar1 extends StatefulWidget {
-  const BotoomAppBar1({super.key});
+class BotoomAppBar extends StatefulWidget {
+  const BotoomAppBar({super.key});
 
   @override
-  State<BotoomAppBar1> createState() => _BotoomAppBar1State();
+  State<BotoomAppBar> createState() => _BotoomAppBarState();
 }
 
-class _BotoomAppBar1State extends State<BotoomAppBar1> {
+class _BotoomAppBarState extends State<BotoomAppBar> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
@@ -27,27 +27,32 @@ class _BotoomAppBar1State extends State<BotoomAppBar1> {
     return Scaffold(
       body: pages[currentIndex], //to show pages at click
 
-      backgroundColor: const Color(0xFF1E2C47), //bottom AppBar backgroundColor
+      backgroundColor:
+          const Color(0xFF191E2C), //container bottom AppBar backgroundColor
 
       bottomNavigationBar: Theme(
         data: ThemeData(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
         ),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Color(0x00192836),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
             iconSize: 30,
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.amber,
-            unselectedItemColor: Colors.blueAccent,
-            showUnselectedLabels: false,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
+            elevation: 0, // 0 value to remove inner shadow
+            backgroundColor:
+                const Color(0xFF1E2C47), //bottom navigaton background
+            type: BottomNavigationBarType.fixed, //click effect
+            selectedItemColor: Colors.amber, //selected button Color
+            unselectedItemColor: Colors.blueAccent, //unselected button Color
+            showUnselectedLabels:
+                false, //show text under icon unselected button
+            currentIndex: currentIndex, //to change button when click
+            onTap: (index) =>
+                setState(() => currentIndex = index), //change pages when click
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_rounded),
