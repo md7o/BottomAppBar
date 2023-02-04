@@ -1,4 +1,4 @@
-package com.example.appbar_project
+package com.auth.app.base
 
 import io.flutter.embedding.android.FlutterActivity
 

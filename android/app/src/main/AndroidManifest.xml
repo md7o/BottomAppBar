@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appbar_project">
+    package="com.auth.app.base">
    <application
         android:label="appbar_project"
         android:name="${applicationName}"

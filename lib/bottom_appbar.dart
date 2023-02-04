@@ -28,23 +28,22 @@ class _BotoomAppBarState extends State<BotoomAppBar> {
       body: pages[currentIndex], //to show pages at click
 
       backgroundColor:
-          const Color(0xFF191E2C), //container bottom AppBar backgroundColor
+          const Color(0xFF1E2C47), //container bottom AppBar backgroundColor
 
       bottomNavigationBar: Theme(
         data: ThemeData(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
         ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+            color: Color(0x00192836),
           ),
           child: BottomNavigationBar(
             iconSize: 30,
             elevation: 0, // 0 value to remove inner shadow
-            backgroundColor:
-                const Color(0xFF1E2C47), //bottom navigaton background
+            backgroundColor: Colors.transparent, //bottom navigaton background
             type: BottomNavigationBarType.fixed, //click effect
             selectedItemColor: Colors.amber, //selected button Color
             unselectedItemColor: Colors.blueAccent, //unselected button Color

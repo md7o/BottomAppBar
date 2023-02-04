@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SettingPage extends StatelessWidget {
@@ -187,6 +189,53 @@ class SettingPage extends StatelessWidget {
                                     fontWeight: FontWeight.normal),
                               ),
                             ],
+                          ),
+                          const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.amber,
+                            size: 25,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Divider(
+                        indent: 30,
+                        endIndent: 30,
+                        thickness: 1,
+                        color: Color(0x73FFFFFF),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          MaterialButton(
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut();
+                            },
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.exit_to_app,
+                                  color: Colors.amber,
+                                  size: 25,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'SignOut',
+                                  style: TextStyle(
+                                      color: Colors.amber,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              ],
+                            ),
                           ),
                           const Icon(
                             Icons.arrow_forward_ios_rounded,

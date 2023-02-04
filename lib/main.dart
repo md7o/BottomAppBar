@@ -1,7 +1,13 @@
 import 'package:appbar_project/bottom_appbar.dart';
+import 'package:appbar_project/screens/auth.dart';
+import 'package:appbar_project/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -13,7 +19,7 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const BotoomAppBar(),
+      home: const Auth(),
     );
   }
 }
