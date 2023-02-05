@@ -1,6 +1,8 @@
 import 'package:appbar_project/bottom_appbar.dart';
 import 'package:appbar_project/screens/auth.dart';
 import 'package:appbar_project/screens/login.dart';
+import 'package:appbar_project/screens/signup.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -19,7 +21,12 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Auth(),
+      routes: {
+        '/': (context) => const Auth(),
+        'home': (context) => const BotoomAppBar(),
+        'signup': (context) => const SignUp(),
+        'login': (context) => const Login(),
+      },
     );
   }
 }
