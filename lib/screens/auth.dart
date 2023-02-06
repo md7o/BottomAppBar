@@ -1,6 +1,5 @@
 import 'package:appbar_project/bottom_appbar.dart';
-import 'package:appbar_project/pages/home_page.dart';
-import 'package:appbar_project/pages/setting_page.dart';
+
 import 'package:appbar_project/screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

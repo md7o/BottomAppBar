@@ -11,6 +11,15 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
+  String? validateEmail(String? formEmail) {
+    if (formEmail == null || formEmail.isEmpty) {
+      return 'E-mail address is required.';
+    }
+
+    return null;
+  }
 
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -33,8 +42,9 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF191E2C),
-      body: SafeArea(
+      backgroundColor: const Color(0xFF191E2C),
+      body: Form(
+        key: _key,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -50,42 +60,46 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 40,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: TextField(
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: TextFormField(
                         controller: _emailController,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
+                        validator: validateEmail,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
                           hintText: 'Email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            borderSide: const BorderSide(
+                              width: 1,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(50),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: TextField(
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
+                          icon: Icon(Icons.lock),
                           hintText: 'Password',
                         ),
                       ),
@@ -97,16 +111,22 @@ class _LoginState extends State<Login> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: ElevatedButton(
-                    onPressed: signIn,
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+                  child: GestureDetector(
+                    onTap: () async {
+                      if (_key.currentState!.validate()) {
+                        await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                        setState(() {});
+                      }
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(15),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(50),
                       ),
                       child: const Center(
                         child: Text(

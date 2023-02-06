@@ -43,7 +43,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF191E2C),
+      backgroundColor: const Color(0xFF191E2C),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -90,7 +90,7 @@ class _SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: TextField(
                         controller: _passwordController,
                         obscureText: true,
