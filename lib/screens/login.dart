@@ -21,6 +21,13 @@ class _LoginState extends State<Login> {
     return null;
   }
 
+  String? validatePassword(String? formPassword) {
+    if (formPassword == null || formPassword.isEmpty)
+      return 'Password is required.';
+
+    return null;
+  }
+
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text.trim(),
@@ -54,60 +61,64 @@ class _LoginState extends State<Login> {
                   "Sign in",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
+                      fontSize: 40,
+                      fontWeight: FontWeight.normal),
                 ),
                 const SizedBox(
-                  height: 40,
-                ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: TextFormField(
-                        controller: _emailController,
-                        validator: validateEmail,
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'Email',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                            borderSide: const BorderSide(
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
+                  height: 45,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          icon: Icon(Icons.lock),
-                          hintText: 'Password',
+                  child: TextFormField(
+                    controller: _emailController,
+                    validator: validateEmail,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(left: 25),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'Email',
+                      prefixIcon: const Icon(
+                        Icons.email,
+                        size: 20,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          width: 1,
                         ),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    validator: validatePassword,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.only(left: 25),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'Password',
+                      prefixIcon: const Icon(
+                        Icons.lock,
+                        size: 20,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -141,7 +152,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
