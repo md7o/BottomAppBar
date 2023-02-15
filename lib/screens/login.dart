@@ -25,6 +25,16 @@ class _LoginState extends State<Login> {
     if (formPassword == null || formPassword.isEmpty)
       return 'Password is required.';
 
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(formPassword)) {
+      return '''
+      Password must be at least 8 characters,
+      include an uppercase letter, number.
+      ''';
+    }
+
     return null;
   }
 
@@ -125,12 +135,14 @@ class _LoginState extends State<Login> {
                   child: GestureDetector(
                     onTap: () async {
                       if (_key.currentState!.validate()) {
-                        await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: _emailController.text,
                           password: _passwordController.text,
                         );
+
                         setState(() {});
+                      } else {
+                        signIn();
                       }
                     },
                     child: Container(

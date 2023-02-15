@@ -35,6 +35,7 @@ class _SignUpState extends State<SignUp> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
       Navigator.of(context).pushNamed('/');
     }
   }
@@ -134,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: TextFormField(
-                      controller: _passwordController,
+                      controller: _confirmPasswordController,
                       validator: validatePassword,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -161,14 +162,16 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: GestureDetector(
-                      onTap: () async {
+                      onTap: () {
                         if (_key.currentState!.validate()) {
-                          await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
+                          FirebaseAuth.instance.createUserWithEmailAndPassword(
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
-                          setState(() {});
+                          setState(() {
+                            signUp();
+                          });
+                          signUp();
                         }
                       },
                       child: Container(
@@ -179,7 +182,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         child: const Center(
                           child: Text(
-                            'Sign in',
+                            'Sign Up',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
