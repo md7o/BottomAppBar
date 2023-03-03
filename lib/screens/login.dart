@@ -139,7 +139,6 @@ class _LoginState extends State<Login> {
                           email: _emailController.text,
                           password: _passwordController.text,
                         );
-
                         setState(() {});
                       } else {
                         signIn();
